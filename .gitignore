@@ -1,6 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,pythonvanilla,react,node,windows,linux,macos,venv,dotenv,django,reactnative
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pythonvanilla,react,node,windows,linux,macos,venv,dotenv,django,reactnative
-
+.env
 ### Django ###
 *.log
 *.pot
