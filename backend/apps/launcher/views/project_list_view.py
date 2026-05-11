@@ -1,9 +1,10 @@
 from rest_framework.views import APIView
 from apps.launcher.models import Project
 from apps.launcher.serializers import ProjectOutputSerializer
-from rest_framework.response import Response
 from rest_framework import status
 from apps.core.utils import str_to_bool
+from apps.core.utils import success_response
+from apps.launcher.enums import ProjectListViewEnums
 
 class ProjectListview(APIView):
 
@@ -19,10 +20,13 @@ class ProjectListview(APIView):
         los activos. Esto es usando el modelo Project lo cual nos devolverá la queryset, 
         no los datos aún.
         """
+        msg = ""
         if not can_show:
             projects = Project.objects.all()
+            msg = ProjectListViewEnums.GET_ALL_PROJECTS
         else:
             projects = Project.objects.all().filter(is_active=True)
+            msg = ProjectListViewEnums.GET_ALL_ACTIVE_PROJECTS
 
         """
         3. Necesitamos obtener los datos de manera correcta, para esto usamos el
@@ -36,4 +40,8 @@ class ProjectListview(APIView):
         """
         projects_list = serializer.data
         
-        return Response(data=projects_list, status=status.HTTP_200_OK)
+        return success_response(
+            data= projects_list,
+            msg=msg,
+            status_code=status.HTTP_200_OK,
+        )
