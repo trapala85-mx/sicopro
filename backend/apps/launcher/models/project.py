@@ -11,7 +11,7 @@ from django.db import models
 
 
 class Project(BaseModel):
-    name = models.CharField(max_length=50, unique=True, verbose_name="Nombre")
+    name = models.CharField(max_length=200, unique=True, verbose_name="Nombre")
     is_active = models.BooleanField(default=True, verbose_name="Activo")
     project_type = models.ForeignKey(
         to="launcher.ProjectType",
@@ -36,3 +36,10 @@ class Project(BaseModel):
             str: Name of the project.
         """
         return self.name.capitalize()
+
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            if self.project_type:
+                self.name = f"{self.name} ({self.project_type.name})"
+
+        super(Project, self).save(*args, **kwargs)
