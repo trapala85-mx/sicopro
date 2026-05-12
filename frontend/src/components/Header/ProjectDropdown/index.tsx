@@ -1,10 +1,7 @@
+import type { ProjectDropdownProps } from '../../../types/projectDropdown';
 import styles from './ProjectDropdown.module.css';
-import { useProjectDropdown } from '../../../hooks/userProjectDropdown';
 
-
-const ProjectDropdown = () => {
-    // desestructurar
-    const { isOpen, selected, projects, toogleDropdown, selectProject } = useProjectDropdown();
+const ProjectDropdown = ({ isOpen, selected, projects, onClick, selectProject }: ProjectDropdownProps) => {
 
     const renderProjectList = () => {
         if (!isOpen) return null;
@@ -27,7 +24,7 @@ const ProjectDropdown = () => {
     }
     return (
         < div className={styles.dropdown_container} >
-            <button onClick={toogleDropdown} className={styles.button}>
+            <button onClick={onClick} className={styles.button}>
                 {selected}
             </button>
             {renderProjectList()}

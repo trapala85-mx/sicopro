@@ -14,21 +14,27 @@ export function useProjectDropdown() {
 
     const [projects, setProjects] = useState<Project[]>([]);
 
-    //const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<string | null>(null)
+
+    const [isLoading, setIsLoading] = useState(false)
 
     // useEffect no acepta async functions por lo que se debe declarar una nueva función
     // y esta nueva función llama a la async function
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setIsLoading(true)
                 const response = await getProjects();
                 setProjects(response.data);
             } catch (err) {
-                console.error('Error fetching projects:', err);
+                const er = err as Error
+                setError(er.message);
+            } finally {
+                setIsLoading(false)
             }
         };
         fetchData();
-    },[])
+    }, [])
 
     // logica para cambiar el estado
     const toogleDropdown = () => (
@@ -44,7 +50,9 @@ export function useProjectDropdown() {
         isOpen,
         selected,
         projects,
+        isLoading,
         toogleDropdown,
         selectProject,
+        setIsLoading,
     };
 }
