@@ -1,0 +1,6 @@
+.body_container {
+    display: flex;
+    height: calc(100vh - 100px);
+    background-color: var(--background-color-primary);
+    color: var(--text-color-primary);
+}

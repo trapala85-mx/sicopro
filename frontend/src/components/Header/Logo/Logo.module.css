@@ -1,0 +1,10 @@
+.logo_img {
+    width: auto;
+    max-height: clamp(60px, 12vh, 90px);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.logo_img:hover {
+    transform: scale(1.05);
+}
