@@ -1,11 +1,11 @@
 import { Header } from '../../components/Header';
 import { Aside } from '../../components/Aside';
 import { Main } from '../../components/Main';
-import { useProjectDropdown } from '../../hooks/userProjectDropdown';
+import { useProjectDropdown } from '../../hooks/useProjectDropdown';
 
 const Dashboard = () => {
 
-    const { isOpen, selected, projects, isLoading, toogleDropdown, selectProject } = useProjectDropdown();
+    const { isOpen, selected, projects, isLoading, error, toogleDropdown, selectProject } = useProjectDropdown();
     return (
         <>
             <Header
@@ -17,6 +17,7 @@ const Dashboard = () => {
             />
             <Aside />
             <Main
+                error={error}
                 isLoading={isLoading}
             />
         </>)

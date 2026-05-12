@@ -1,10 +1,10 @@
 import { Logo } from './Logo';
 import { SystemName } from './SystemName';
 import { ProjectDropdown } from './ProjectDropdown';
-import type { ProjectDropdownProps } from '../../types/projectDropdown';
 import styles from './Header.module.css'
+import type { HeaderProps } from '../../types/headerProps';
 
-const Header = ({ isOpen, selected, projects, onClick, selectProject }: ProjectDropdownProps) => (
+const Header = ({ isOpen, selected, projects, onClick, selectProject }: HeaderProps) => (
     <header className={styles.header_container}>
         <Logo />
 

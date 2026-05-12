@@ -1,4 +1,4 @@
-import type { ProjectDropdownProps } from '../../../types/projectDropdown';
+import type { ProjectDropdownProps } from '../../../types/projectDropdownProps';
 import styles from './ProjectDropdown.module.css';
 
 const ProjectDropdown = ({ isOpen, selected, projects, onClick, selectProject }: ProjectDropdownProps) => {

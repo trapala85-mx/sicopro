@@ -1,4 +1,4 @@
-import type { MainProps } from "../../types/main"
+import type { MainProps } from "../../types/mainProps"
 
 
 
