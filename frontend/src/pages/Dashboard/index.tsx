@@ -2,6 +2,7 @@ import { Header } from '../../components/Header';
 import { Aside } from '../../components/Aside';
 import { Main } from '../../components/Main';
 import { useProjectDropdown } from '../../hooks/useProjectDropdown';
+import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
 
@@ -15,11 +16,15 @@ const Dashboard = () => {
                 onClick={toogleDropdown}
                 selectProject={selectProject}
             />
-            <Aside />
-            <Main
-                error={error}
-                isLoading={isLoading}
-            />
+
+            <div className={styles.body_container}>
+                <Aside />
+                <Main
+                    error={error}
+                    isLoading={isLoading}
+                />
+            </div>
+
         </>)
 }
 export { Dashboard };

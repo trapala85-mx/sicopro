@@ -6,7 +6,9 @@ import type { HeaderProps } from '../../types/headerProps';
 
 const Header = ({ isOpen, selected, projects, onClick, selectProject }: HeaderProps) => (
     <header className={styles.header_container}>
-        <Logo />
+        <div className={styles.logo_wrapper}>
+            <Logo />
+        </div>
 
         <div className={styles.logo_dropdown_container}>
             <SystemName />

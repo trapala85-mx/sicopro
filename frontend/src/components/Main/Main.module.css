@@ -1,0 +1,17 @@
+.main_container {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.text_content {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text-color-primary);
+    font-weight: 600;
+    margin-top: 1rem;
+}

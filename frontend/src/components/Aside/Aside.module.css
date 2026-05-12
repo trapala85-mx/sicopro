@@ -1,0 +1,11 @@
+.aside_container {
+    width: clamp(280px, 15vw, 380px);
+    padding: 2rem 1.5rem;
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    font-weight: 600;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-color-primary);
+    border-right: 3px solid var(--text-color-third);
+    text-align: center;
+    box-sizing: border-box;
+}

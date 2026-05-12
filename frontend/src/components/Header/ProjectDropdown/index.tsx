@@ -8,10 +8,10 @@ const ProjectDropdown = ({ isOpen, selected, projects, onClick, selectProject }:
         if (projects.length === 0) return null;
 
         return (
-            <ul>
+            <ul className={styles.dropdown_list}>
                 {
                     projects.map(project => (
-                        <li
+                        <li className={styles.dropdown_item}
                             key={project.id}
                             onClick={() => selectProject(project)}
                         >
