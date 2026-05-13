@@ -9,15 +9,15 @@ class ProjectListview(APIView):
 
     def get(self, request):
         """
-        1. Verificar si can_show viene.
+        1. Verificar si is_active viene.
         """
-        can_show = str_to_bool(request.query_params.get('can_show', None))
-        msg = ProjectListViewEnums.GET_ALL_ACTIVE_PROJECTS if can_show else ProjectListViewEnums.GET_ALL_PROJECTS
+        is_active = str_to_bool(request.query_params.get('active', None))
+        msg = ProjectListViewEnums.GET_ALL_ACTIVE_PROJECTS if is_active else ProjectListViewEnums.GET_ALL_PROJECTS
         
         """
         2. Delegamos al Service la lógica para obtener los Queryset.
         """
-        projects = ProjectService.get_projects(can_show=can_show)
+        projects = ProjectService.get_projects(active=is_active)
         """
         4. Obtener el diccionario de python limpio con el Serializer
         """

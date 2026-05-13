@@ -5,12 +5,12 @@ from apps.launcher.models import Project
 class ProjectService:
 
     @staticmethod
-    def get_projects(can_show:bool) -> QuerySet[Project]:
+    def get_projects(active:bool) -> QuerySet[Project]:
         """Retorna la Queryset para obtener todos los proyectos o solo los activos en sistema.
         
         params:
-            can_show: bool. True muestra solo los activos, False todos los del sistema."""
-        if can_show:
+            active: bool. True muestra solo los activos, False todos los del sistema."""
+        if active:
             return ProjectService._get_all_active_projects()
         
         return ProjectService._get_all_projects()
