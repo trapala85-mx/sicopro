@@ -1,6 +1,7 @@
 .body_container {
     display: flex;
-    height: calc(100vh - 100px);
-    background-color: var(--background-color-primary);
-    color: var(--text-color-primary);
+    min-height: 100vh;
+    background-color: var(--color-background);
+    color: var(--color-on-surface);
+    margin-top: 64px; /* Header height */
 }
