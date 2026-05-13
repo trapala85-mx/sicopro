@@ -23,7 +23,4 @@ class ProjectModule(BaseModel):
         verbose_name="Activo"
     )
 
-    @property
-    def can_show(self) -> bool:
-        return self.is_active and self.module.can_show
     

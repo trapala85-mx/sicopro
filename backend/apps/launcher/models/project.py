@@ -14,15 +14,6 @@ class Project(BaseModel):
     name = models.CharField(max_length=200, unique=True, verbose_name="Nombre")
     is_active = models.BooleanField(default=True, verbose_name="Activo")
 
-    @property
-    def can_show(self) -> bool:
-        """Shows if the project can be redered or not.
-
-        Returns:
-            bool: True if can be showed in frontend , False if not.
-        """
-        return self.is_active
-
     def __str__(self) -> str:
         """Return Name of the Project.
 

@@ -18,4 +18,3 @@ class ModuleAdmin(admin.ModelAdmin):
 @admin.register(ProjectModule)
 class ProjectModuleAdmin(admin.ModelAdmin):
     list_display = ('project', 'module','is_active', "created_at", "updated_at",)
-    readonly_fields = ("project", "module", "is_active", "created_at", "updated_at")
