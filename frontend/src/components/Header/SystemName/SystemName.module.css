@@ -1,9 +1,10 @@
 .systemNameTitle {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: 24px;
     font-weight: 700;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    color: var(--text-color-primary);
-    letter-spacing: -0.5px;
+    font-family: 'Inter', sans-serif;
+    color: var(--color-primary);
+    letter-spacing: -0.01em;
     margin: 0;
     white-space: nowrap;
+    text-transform: uppercase;
 }
