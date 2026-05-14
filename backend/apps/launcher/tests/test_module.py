@@ -1,0 +1,28 @@
+from rest_framework.test import APITestCase
+from rest_framework import status
+from django.urls import reverse
+from apps.launcher.models import Module
+
+class ModuleListTests(APITestCase):
+
+    def setUp(self):
+        self.modulo_home = Module.objects.create(
+            name="Home",
+            order=0,
+        )
+        self.modulo_instrumentos = Module.objects.create(
+            name="Instrumentos Legales",
+            order=100,
+        )
+        self.modulo_contrato = Module.objects.create(
+            name="Contrato",
+            order=110,
+            parent=self.modulo_instrumentos
+        )
+
+    def test_get_all_modules(self):
+        url = reverse('launcher:list-modules')
+        response = self.client.get(url, data={'active':False})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data['data']), 3)
+        self.assertEqual(response.data['success'], True)

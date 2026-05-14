@@ -35,7 +35,7 @@ def exception_handler(exc, context):
         data = str(response.data)
 
     return error_response(
-        success=success,
+        success=False,
         msg=msg,
         status_code=response.status_code,
         data=data
