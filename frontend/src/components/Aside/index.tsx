@@ -18,6 +18,7 @@ const Aside = ({ modules, selectedModule, setSelectedModule }: AsideProps) => {
                         setExpandedId={setExpandedChild}
                         selectedModule={selectedModule}
                         setSelectedModule={setSelectedModule}
+                        depth={0}
                     />
                 )
             )

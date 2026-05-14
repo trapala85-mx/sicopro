@@ -6,4 +6,5 @@ export interface ModuleItemProps {
     setExpandedId: (id: string | null) => void;
     selectedModule: Module | null;
     setSelectedModule: (module: Module) => void;
+    depth?: number;
 }
