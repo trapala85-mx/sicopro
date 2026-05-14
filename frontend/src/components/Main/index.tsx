@@ -2,7 +2,7 @@ import type { MainProps } from "../../types/mainProps"
 import styles from './Main.module.css';
 
 
-const Main = ({ error, isLoading }: MainProps) => {
+const Main = ({ error, isLoading, selectedModule }: MainProps) => {
 
     const renderContext = () => {
         if (error) {
@@ -16,6 +16,7 @@ const Main = ({ error, isLoading }: MainProps) => {
     return (
         <main className={styles.main_container}>
             {renderContext()}
+            {selectedModule && <p className={styles.text_content}>{selectedModule.name}</p>}
         </main >)
 };
 
