@@ -34,6 +34,7 @@ const Dashboard = () => {
             <div className={styles.body_container}>
                 <Aside
                     modules={modules}
+                    selectedModule={moduleSelected}
                     setSelectedModule={setModuleSelected}
                 />
 
