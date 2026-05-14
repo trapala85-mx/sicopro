@@ -1,6 +1,6 @@
 # apps/core/utils/str_to_bool.py
 
-def str_to_bool(value, default=False):
+def str_to_bool(value:str, default=False) -> bool:
     """
     Convierte un string a booleano.
     
