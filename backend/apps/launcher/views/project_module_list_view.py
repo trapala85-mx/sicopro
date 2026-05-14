@@ -6,7 +6,7 @@ from rest_framework import status
 from apps.core.utils import success_response
 from apps.core.utils import str_to_bool
 from apps.launcher.services import ProjectModuleService
-from apps.launcher.serializers import ProjectModuleOutputSerializer
+from apps.launcher.serializers import ModuleOutputSerializer
 from apps.launcher.enums import ProjectModuleEnums
 
 class ProjectModuleListView(APIView):
@@ -18,7 +18,7 @@ class ProjectModuleListView(APIView):
         
         project_modules = ProjectModuleService.get_project_modules(active=is_active, id=id)
         
-        serializer = ProjectModuleOutputSerializer(project_modules, many=True)
+        serializer = ModuleOutputSerializer(project_modules, many=True)
         
         return success_response(
             data=serializer.data,
