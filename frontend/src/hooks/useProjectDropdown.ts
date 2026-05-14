@@ -11,7 +11,7 @@ export function useProjectDropdown() {
     const [isOpen, setIsOpen] = useState(false);
 
     // el valor seleccionado
-    const [selected, setSelected] = useState("Selecciona un Proyecto");
+    const [selected, setSelected] = useState<Project | null>(null);
 
     // logica para cambiar el estado
     const toogleDropdown = () => (
@@ -19,7 +19,7 @@ export function useProjectDropdown() {
     );
 
     const selectProject = (project: Project) => {
-        setSelected(project.name);
+        setSelected(project);
         setIsOpen(false);
     };
 

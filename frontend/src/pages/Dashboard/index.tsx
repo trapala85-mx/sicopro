@@ -11,7 +11,7 @@ const Dashboard = () => {
         <>
             <Header
                 isOpen={isOpen}
-                selected={selected}
+                selected={selected?.name || "Selecciona un Proyecto"}
                 projects={projects}
                 onClick={toogleDropdown}
                 selectProject={selectProject}
