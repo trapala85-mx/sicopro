@@ -7,7 +7,7 @@ class ModuleOutputSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Module
-        fields = ['id', 'name', 'order', 'is_active', 'submodules']
+        fields = ['id', 'name', 'order', 'parent','is_active', 'submodules']
     
     def get_submodules(self, obj):
         submodules = obj.submodules.all()
