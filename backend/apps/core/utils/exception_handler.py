@@ -10,8 +10,11 @@ Hay 3 tipos de errores:
     3. Los que nos manda el Serializer. En este caso sí tenemos "data" ya que nos da una lista de los campos y sus errores.
 Por lo tanto, son 3 escenarios a verificar para que podamos enviar una respuesta bien estructurada.
 """
+
 from rest_framework.views import exception_handler as drf_exception_handler
+
 from apps.core.utils import error_response
+
 
 def exception_handler(exc, context):
     msg = ""
@@ -24,19 +27,14 @@ def exception_handler(exc, context):
         return None
 
     # 2.1. Menaje de nosotros:
-    if hasattr(exc, 'message'):
+    if hasattr(exc, "message"):
         msg = exc.message
     # 2.2. Error general de DRF
-    elif 'detail' in response.data:
-        msg = response.data['detail']
+    elif "detail" in response.data:
+        msg = response.data["detail"]
     # 2.3. Error de validación Serializers.
     else:
         msg = "Error de validación."
-        data = str(response.data)
+        data = response.data
 
-    return error_response(
-        success=False,
-        msg=msg,
-        status_code=response.status_code,
-        data=data
-        )
+    return error_response(success=False, msg=msg, status_code=response.status_code, data=data)
