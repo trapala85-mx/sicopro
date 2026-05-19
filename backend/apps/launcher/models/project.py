@@ -6,8 +6,9 @@ Tiene un FK con el modelo ProjectType donde usaremos como related_name projects
 para que en ProjectType aparezta projects la relación con muchos Proyectos.
 """
 
-from apps.core.models import BaseModel
 from django.db import models
+
+from apps.core.models import BaseModel
 
 
 class Project(BaseModel):
