@@ -8,6 +8,7 @@ INSTALLED_APPS = [
     # LOCAL APPS
     'apps.core',
     'apps.launcher',
+    'apps.legal_instruments',
 ]
 
 MIDDLEWARE = [
