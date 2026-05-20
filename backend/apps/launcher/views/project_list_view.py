@@ -1,19 +1,20 @@
-from rest_framework.views import APIView
-from apps.launcher.serializers import ProjectOutputSerializer
 from rest_framework import status
-from apps.core.utils import str_to_bool
-from apps.core.utils import success_response
-from apps.launcher.enums import ProjectEnums
-from apps.launcher.services import ProjectService
-class ProjectListview(APIView):
+from rest_framework.views import APIView
 
+from apps.core.utils import str_to_bool, success_response
+from apps.launcher.enums import ProjectEnums
+from apps.launcher.serializers import ProjectOutputSerializer
+from apps.launcher.services import ProjectService
+
+
+class ProjectListview(APIView):
     def get(self, request):
         """
         1. Verificar si is_active viene.
         """
-        is_active = str_to_bool(request.query_params.get('active', None))
+        is_active = str_to_bool(request.query_params.get("active", None))
         msg = ProjectEnums.GET_ALL_ACTIVE_PROJECTS if is_active else ProjectEnums.GET_ALL_PROJECTS
-        
+
         """
         2. Delegamos al Service la lógica para obtener los Queryset.
         """
@@ -23,9 +24,9 @@ class ProjectListview(APIView):
         """
         serializer = ProjectOutputSerializer(instance=projects, many=True)
         projects_list = serializer.data
-        
+
         return success_response(
-            data= projects_list,
+            data=projects_list,
             msg=msg,
             status_code=status.HTTP_200_OK,
         )

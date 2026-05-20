@@ -1,13 +1,14 @@
 import uuid
 
-from rest_framework.views import APIView
-from rest_framework.request import Request
 from rest_framework import status
-from apps.core.utils import success_response
-from apps.core.utils import str_to_bool
-from apps.launcher.services import ProjectModuleService
-from apps.launcher.serializers import ModuleOutputSerializer
+from rest_framework.request import Request
+from rest_framework.views import APIView
+
+from apps.core.utils import str_to_bool, success_response
 from apps.launcher.enums import ProjectModuleEnums
+from apps.launcher.serializers import ModuleOutputSerializer
+from apps.launcher.services import ProjectModuleService
+
 
 class ProjectModuleListView(APIView):
 
