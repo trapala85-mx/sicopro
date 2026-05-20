@@ -6,7 +6,7 @@ const Main = ({ error, isLoading, selectedModule }: MainProps) => {
 
     const renderContext = () => {
         if (error) {
-            return (<p className={styles.text_content}>Error: revise su conexión.</p>);
+            return (<p className={styles.text_content}>Error de conexión con el servidor.</p>);
         } else if (isLoading) {
             return (<p className={styles.text_content}>Cargando ...</p>);
         } else {
