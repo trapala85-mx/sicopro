@@ -42,6 +42,7 @@ const Dashboard = () => {
                     error={moduleError}
                     isLoading={isModuleLoading}
                     selectedModule={moduleSelected}
+                    projectSelected={selected}
                 />
             </div>
 

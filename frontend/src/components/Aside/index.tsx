@@ -1,4 +1,4 @@
-import type { AsideProps } from '../../types/asideProps';
+import type { AsideProps } from '../../types/props/asideProps';
 import { ModuleItem } from './ModuleItem';
 import styles from './Aside.module.css';
 import { useState } from 'react';
