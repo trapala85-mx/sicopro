@@ -13,8 +13,9 @@ dependencies = [
 ]
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py314"
 
-[tool.ruff.lint]
-select = ["E", "F", "I"]
+# Define explícitamente el bloque de formato con la nueva sintaxis
+[tool.ruff.format]
+line-ending = "cr-lf"

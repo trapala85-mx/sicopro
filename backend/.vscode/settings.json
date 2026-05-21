@@ -23,5 +23,12 @@
     "mypy-type-checker.args": [
         "--config-file=pyproject.toml"
     ],
-    "mypy-type-checker.importStrategy": "fromEnvironment"
+    "mypy-type-checker.importStrategy": "fromEnvironment",
+    // --- AGREGA ESTAS LÍNEAS ABAJO ---
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true
+    },
+    "uv.format.args": [],
+    "ruff.format.args": []
 }

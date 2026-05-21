@@ -2,8 +2,12 @@ from rest_framework import serializers
 
 from apps.core.utils import change_str_date
 from apps.legal_instruments.models import Contract
-from apps.legal_instruments.serializers.client_serializer import ClientOutputSerializer
-from apps.legal_instruments.serializers.currency_serializer import CurrencyOutputSerializer
+from apps.legal_instruments.serializers.client_serializer import (
+    ClientOutputSerializer,
+)
+from apps.legal_instruments.serializers.currency_serializer import (
+    CurrencyOutputSerializer,
+)
 
 
 class ContractOutputSerializer(serializers.ModelSerializer):
@@ -48,6 +52,8 @@ class ContractWriteSerializer(serializers.ModelSerializer):
     """Serializer para los datos de Entrada para peticiones POST/PUT/PATCH cuando el usuario
     Crea o Edita un Contrato"""
 
+    clients = ClientOutputSerializer(many=True)
+
     class Meta:
         model = Contract
         fields = [
@@ -64,6 +70,28 @@ class ContractWriteSerializer(serializers.ModelSerializer):
             "clients",
             "currency",
         ]
+
+    def create(self, validated_data):
+        # sacamos el atributo de los datos validados para no pasarlo al create
+        clients_list = validated_data.pop("clients")  # lista de objetos Client
+        # creatmos el objeto contracto sin clients
+        contract = Contract.objects.create(**validated_data)
+        # como contract.clients es una lista, se usa set para enviar la lista de clientes
+        contract.clients.set(clients_list)
+        return contract
+
+    def update(self, instance: Contract, validated_data):
+        # extraer datos de clientes
+        clients_list = validated_data.pop("clients")
+        # actualizar campos de validates_Data
+        for key, value in validated_data.items():
+            setattr(instance, key, value)
+        # guardamos la instancia sin clientes
+        instance.save()
+        # seteamos los clientes
+        instance.clients.set(clients_list)
+
+        return instance
 
 
 class ContractWriteOutputSerializer(serializers.ModelSerializer):

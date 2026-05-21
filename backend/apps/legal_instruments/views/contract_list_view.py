@@ -52,7 +52,7 @@ class ContractListView(APIView):
         contract = serializer.save()
 
         # 4. pasar los datos por el serializador de salida
-        output = ContractWriteOutputSerializer(instance=contract)
+        output = ContractWriteSerializer(instance=contract)
 
         return success_response(
             data=output.data,

@@ -19,7 +19,7 @@ class Contract(BaseModel):
         COMPLETED = "completed", "Terminado"
 
     contract_number = models.CharField(max_length=100, unique=True, verbose_name="Número")
-    description = models.TextField(verbose_name="Objeto")
+    description = models.TextField(verbose_name="Objeto de contrato")
     sign_date = models.DateField(verbose_name="Fecha de firma")
     expiration_date = models.DateField(verbose_name="Fecha de fin")
     duration_days = models.IntegerField(verbose_name="Duración")
@@ -33,9 +33,7 @@ class Contract(BaseModel):
         decimal_places=2,
         verbose_name="Importe con IVA",
     )
-    status = models.CharField(
-        max_length=20, choices=Status.choices, default=Status.ACTIVE, verbose_name="Estado"
-    )
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.ACTIVE, verbose_name="Estado")
     clients = models.ManyToManyField(
         to="Client",
         related_name="contracts",
@@ -55,3 +53,6 @@ class Contract(BaseModel):
         related_name="contract",
         verbose_name="Proyecto",
     )
+
+    def __str__(self):
+        return f"{self.contract_number}"
