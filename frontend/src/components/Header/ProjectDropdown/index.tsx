@@ -1,4 +1,4 @@
-import type { ProjectDropdownProps } from '../../../types/projectDropdownProps';
+import type { ProjectDropdownProps } from '../../../types/props/projectDropdownProps';
 import styles from './ProjectDropdown.module.css';
 
 const ProjectDropdown = ({ isOpen, selected, projects, onClick, selectProject }: ProjectDropdownProps) => {
@@ -15,14 +15,14 @@ const ProjectDropdown = ({ isOpen, selected, projects, onClick, selectProject }:
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
-                        <input 
-                            type="text" 
-                            placeholder="Buscar proyecto..." 
+                        <input
+                            type="text"
+                            placeholder="Buscar proyecto..."
                             className={styles.search_input}
                         />
                     </div>
                 </div>
-                
+
                 <ul className={styles.projects_ul}>
                     {
                         projects.map(project => (
@@ -44,7 +44,7 @@ const ProjectDropdown = ({ isOpen, selected, projects, onClick, selectProject }:
             <button onClick={onClick} className={styles.button}>
                 {selected}
                 <svg className={styles.arrow} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m6 9 6 6 6-6"/>
+                    <path d="m6 9 6 6 6-6" />
                 </svg>
             </button>
             {renderProjectList()}
